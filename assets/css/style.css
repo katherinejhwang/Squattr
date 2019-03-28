@@ -47,10 +47,6 @@ body {
     border-radius: 5px;
 }
 
-#bottomRightDiv {
-
-}
-
 #footer {
     background-color: white;
     width: 100%;
@@ -66,5 +62,4 @@ body {
 #submit {
     margin: 15px;
     color: black;
-    border-radius: 2px;
 }
