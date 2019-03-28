@@ -58,6 +58,8 @@ body {
     padding: 10px 0px 10px;
     font-size: 10px;
     font-family: 'Amatic SC', cursive;
+    position: absolute;
+    bottom: 0px
 
 }
 
