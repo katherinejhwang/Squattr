@@ -1,0 +1,40 @@
+#navBar {
+    background-color: white;
+    width: 100%;
+    font-family: font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: lightgrey;
+}
+
+#masterDiv {
+    border: 2px solid black;
+}
+
+#topDiv {
+    background-color: lightblue;
+    width: 100%;
+    text-align: center;
+}
+
+#middleDiv {
+    background-color: lightgreen;
+    width: 100%;
+    text-align: center;
+}
+
+#bottomLeftDiv {
+    background-color: lightyellow;
+}
+
+#bottomRightDiv {
+    background-color: lightsalmon;
+}
+
+#footer {
+    background-color: white;
+    width: 100%;
+    text-align: center;
+
+}
