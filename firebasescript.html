@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+    <meta charset="utf-8">
+
+    <!-- modal script references -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
+  
+    <title>Squatt Info</title>
+</head>
+<body>
+
+<div class="container">
+
+<!-- forms for review input -->
+
+<div class="col-sm-12 col-md-12 col-lg-12" id="datainput">
+
+  <div class="row"><p></p></div>
+
+  <div class="row">
+      <div class="form-group col-md-12">
+      <label for="Water">Water</label>
+      <input type="text" class="form-control" id="water" placeholder="Running or Not?">
+      </div>
+  </div>
+
+  <div class="row">
+      <div class="form-group col-md-12">
+      <label for="Destination">Power</label>
+      <input type="text" class="form-control" id="power" placeholder="Electricity Still On?">
+      </div>
+  </div>
+
+  <div class="row">
+      <div class="form-group col-md-12">
+      <label for="Security">Security</label>
+      <input type="text" class="form-control" id="security" placeholder="Security Guards?">
+      </div>
+  </div>
+
+  <div class="row">
+      <div class="form-group col-md-12">
+      <label for="neighbors">Neighbors</label>
+      <input type="text" class="form-control" id="neighbors" placeholder="Nosy?">
+      </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group col-md-12">
+    <label for="RodentsandInsects">RodentsandInsects</label>
+    <input type="text" class="form-control" id="rodentsAndInsects" placeholder="Rodents and Insects?">
+    </div>
+</div>
+
+<div class="row">
+  <div class="form-group col-md-12">
+  <label for="OtherComments">Other Comments</label>
+  <input type="text" class="form-control" id="otherComments" placeholder="Other Comments">
+  </div>
+</div>
+
+  <div class="row">
+      <div class="form-group col-md-12">
+      <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+      </div>
+  </div>
+
+</div>
+
+</div>
+
+<div class="row"><p></p></div>
+
+</div>
+
+
+<!-- cards to print reviews -->
+
+<p></p>
+
+<div class="card-columns">
+
+</div>
+</div>
+    
+</div>
+
+          <!-- end card section -->
+    </div>
+
+
+ <!-- end container div  -->
+</div>
+
+      
+<script>
+$(document).ready(function () {
+
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBgsXpvv64II3MPuCvCc1K6W9hr1j8aItA",
+    authDomain: "squattr-19bfc.firebaseapp.com",
+    databaseURL: "https://squattr-19bfc.firebaseio.com",
+    projectId: "squattr-19bfc",
+    storageBucket: "squattr-19bfc.appspot.com",
+    messagingSenderId: "847122013348"
+  };
+
+  firebase.initializeApp(config);
+
+  //set var database to equal to firebase.database();
+  var database = firebase.database();
+
+  //set up object
+  var reviews = {
+
+    //set up empty values
+      water: "",
+      power: "",
+      security: "",
+      neighbors: "",
+      rodentsAndInsects: "",
+      otherComments: "",
+
+//Function for pushing train information to firebase
+    reviewInput: function () {
+        reviews.water = $("#water").val().trim();
+        reviews.power = $("#power").val().trim();
+        reviews.security = $("#security").val().trim();
+        reviews.neighbors = $("#neighbors").val().trim();
+        reviews.rodentsAndInsects = $("#rodentsAndInsects").val().trim();
+        reviews.otherComments = $("#otherComments").val().trim();
+        console.log(water);
+        console.log(power);
+        console.log(security);
+        console.log(neighbors);
+        console.log(rodentsAndInsects);
+        console.log(otherComments);
+        database.ref().push({
+            water: reviews.water,
+            power: reviews.power,
+            security: reviews.security,
+            neighbors: reviews.neighbors,
+            rodentsAndInsects: reviews.rodentsAndInsects,
+            otherComments: reviews.otherComments,
+        })
+
+    },
+    
+  } //close train object
+
+  database.ref().on("value",function(snapshot) {
+
+// If any errors are experienced, log them to console.
+  }, function(errorObject) {
+    console.log("The read failed: " + errorObject.code);
+  });
+
+  //on click of submit button, run the function reviewInput
+  $("#submit").on("click", function() {
+    reviews.reviewInput();
+
+  });
+
+  database.ref().on("child_added",function(snapshot) {
+
+    var newCard = $("<div class='card'><div class='card-body>").append(
+    $("<p>" + "</p>"),
+    $("<p>" + "Water: "+ snapshot.val().water + "</p>"),
+    $("<p>" + "Power: "+ snapshot.val().power + "</p>"),
+    $("<p>" + "Security: "+snapshot.val().security + "</p>"),
+    $("<p>" + "Neighbors: "+snapshot.val().neighbors + "</p>"),
+    $("<p>" + "Rodents and Insects: "+snapshot.val().rodentsAndInsects + "</p>"),
+    $("<p>" + "Other Comments: " + snapshot.val().otherComments + "</p>"),
+    );
+
+    $(".card-columns").append(newCard);
+
+  });
+
+}); //close document ready function
+
+</script>
