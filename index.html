@@ -9,6 +9,10 @@
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
   <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">  <title>Squattr</title>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
+
 </head>
 
 <body>
@@ -62,10 +66,17 @@
             <!-- Div ID Bottm from Highlighted Page -->
 
             <div class="row" id="bottomDiv">
-                <div class="col-sm-12 col-md-12 col-md-12">                   
+                <div class="col-sm-12 col-md-12 col-md-12">
+                                     
                 <div class="row">
-                <input class="btn btn-danger" type="submit" value="Use Current Location" id="currentLocation">
+                <div class="col-sm-4 col-md-4 col-md-4"></div>
+                <div class="col-sm-4 col-md-4 col-md-4">
+                  <div class="centerBlock">
+                <input class="btn btn-danger" type="CurrentLocation" value="Use Current Location" id="currentLocation">
+                  </div>
                 </div>
+                </div>
+
                 <div class="row">
                   
                 <div class="col-sm-10 col-md-10 col-md-10" id="bottomLeftDiv">                   
