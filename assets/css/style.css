@@ -63,3 +63,8 @@ body {
     margin: 15px;
     color: black;
 }
+
+#map{
+    height: 400px;
+    width: 100%;
+}

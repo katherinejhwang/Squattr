@@ -1,4 +1,6 @@
-    var foreclosureArray = [];
+  
+  
+  var foreclosureArray = [];
    
 
    function addForclosures (cb) {
@@ -25,18 +27,50 @@
    });
 }
 //showing google maps on the screen
-var map;
+var map , infoWindow;
 
+$("#map").hide();
 
-function initMap() {
-    addForclosures(function(){
-        console.log(foreclosureArray);
+    $("#currentLocation").on( "click", function initMap()  {
+        $("#map").toggle();
+        addForclosures(function(){
+        
         var uluru = {lat: 34.0689, lng: -118.4452};
         var map = new google.maps.Map(
             document.getElementById('map'), 
             {zoom : 14, 
             center : uluru});
     
+           if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                  var pos = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                  };
+      
+                  infoWindow.setPosition(pos);
+                  infoWindow.setContent('Location found.');
+                  infoWindow.open(map);
+                  map.setCenter(pos);
+                }, function() {
+                  handleLocationError(true, infoWindow, map.getCenter());
+                });
+              } else {
+                // Browser doesn't support Geolocation
+                handleLocationError(false, infoWindow, map.getCenter());
+              }
+            
+      
+            function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+              infoWindow.setPosition(pos);
+              infoWindow.setContent(browserHasGeolocation ?
+                                    'Error: The Geolocation service failed.' :
+                                    'Error: Your browser doesn\'t support geolocation.');
+              infoWindow.open(map);
+            }
+           
+
+
             foreclosureArray.forEach(function(fc){
                 // console.log(fc);
                 var latLng = new google.maps.LatLng({ lat : fc[1], lng: fc[0]});
@@ -47,17 +81,17 @@ function initMap() {
                     map: map})
 
             
-            });
+            })
+    })
+    
     });
-    
-    
 
 
-
+  
 
 
     $(window).resize(function(){
 
         google.maps.event.trigger(map, "resize");
     });
-  };
+  
