@@ -17,9 +17,6 @@
     <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
     <!-- Modal Bootstrap -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-
-  
   <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
   <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">  <title>Squattr</title>
   
@@ -38,13 +35,13 @@
               </button>
             </div>
             <div class="modal-body">
-                    <p>One third of renters in Los Angeles spend more than half their income on rent. Yet, thousands of bank-owned properties lie vacant across the city. Why rent, when you can Squatt?</p>
+                    <p>One third of renters in Los Angeles spend more than half their income on rent. Yet, thousands of bank-owned properties lie vacant across the city.</p>
 
                     <p>In certain locales, it is possible to seize a vacant property and claim squatter’s rights -granting you right of adverse possession. In a nutshell, this gives you ownership of the abandoned property simply by taking it over (under certain conditions).</p>
                     
                     <p>Enter your location, and SquaTTr will find a list of nearby bank-owned properties you could seize.</p>
 
-                    <p><img src="./assets/images/squatt.png"></p>
+                    <p><img src="./assets/images/squatt.png" class="center"></p>
 
                     <p><strong>DISCLAIMER:</strong></p>
                     
@@ -70,13 +67,10 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="./index.html">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Link1</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">LInk2</a>
+            <a class="nav-link" href="./stats.html">LA Housing Stats</a>
           </li>
         </ul>
       </div>
@@ -93,24 +87,16 @@
             <!-- Div ID Top from Highlighted Page -->
 
                 <div class="row"><div id="topDiv">
-                  <p><h2>squaTTr</h2></p>
-                  <p><i>Because the rent is too damn high!</i></p>
+                  <h1>squaTTr</h1>
+                  <h2><i>Because the rent is too damn high!</i></h2>
                 </div>
               </div>
 
             <!-- Div ID Middle from Highlighted Page -->
 
-             
-
-
-            
-
-                <div class="row"><div id="middleDiv">
-                <p></p>
-                <p>One third of renters in Los Angeles spend more than half their income on rent.</p>
-                <p></p>
-
-                
+                <div class="row">
+                  <div id="middleDiv">
+                <p>Enter your location for a list of nearby bank-owned properties to seize.</p>
                 </div>
                 </div>
 
@@ -261,7 +247,7 @@
 
     
     <!-- Footer -->
-    <div id="footer">COPYRIGHT &copy;</div>
+    <div id="footer">COPYRIGHT &copy; 2019</div>
 
 
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDeGHL5IOI-aLC6AkKUL-ft9Ok29UL2mGM&callback=initMap"> </script>
