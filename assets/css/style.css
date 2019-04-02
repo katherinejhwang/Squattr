@@ -64,7 +64,8 @@ body {
     color: black;
 }
 
-#map{
-    height: 400px;
+#map, #pano{
+    float: top;
+    height: 300px;
     width: 100%;
 }

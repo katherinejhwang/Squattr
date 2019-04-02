@@ -37,6 +37,7 @@ function addForclosures(cb) {
 var map, infoWindow;
 
 $("#map").hide();
+$("#pano").hide();
 
 $("#currentLocation").on("click", function initMap() {
 
@@ -101,13 +102,25 @@ $("#currentLocation").on("click", function initMap() {
                 map: map
             })
 
+            marker.addListener('click',function (){
+                $("#pano").toggle();
+                var panorama = new google.maps.StreetViewPanorama(
+                    document.getElementById('pano'), {
+                        position: latLng,
+                        pov: {
+                            heading: 34,
+                            pitch: 10
+                        }
+                    }
+                )
+                       map.setStreetView(panorama);
+            })
+         
 
         })
     })
 
 });
-
-
 
 
 
