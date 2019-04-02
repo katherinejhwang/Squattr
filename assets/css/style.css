@@ -69,3 +69,8 @@ body {
     height: 300px;
     width: 100%;
 }
+
+.centerBlock {
+    display: table;
+    margin: auto;
+}
