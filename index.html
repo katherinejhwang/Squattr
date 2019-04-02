@@ -103,7 +103,6 @@
                 
             <!-- Div ID Bottm from Highlighted Page -->
                 <div id="map"></div>
-                <br>
                 <div id="pano"></div>
 
                 <!-- Show Review Modal -->
@@ -222,7 +221,7 @@
                     <input type="text" class="form-control" id="addressInput" placeholder="city, state or zip, i.e. Austin or Paris, TX or 64101">
                     <small id="emailHelp" class="form-text text-muted">We'll never share your address with anyone else.</small>
                     <p></p>
-                    
+                    </form>
                   </div>
                 
                   <div class="col-sm-2 col-md-2 col-md-2" id="bottomRightDiv">
@@ -250,16 +249,9 @@
     <!-- Footer -->
     <div id="footer">COPYRIGHT &copy; 2019</div>
 
-    <!-- <script>
-      var geocoder;
-      function initMap(){
-    geocoder = new google.maps.Geocoder();
 
-
-      }
-    </script> -->
-    <script src="./assets/javascript/script.js"></script>    
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDeGHL5IOI-aLC6AkKUL-ft9Ok29UL2mGM&callback=initMap&libraries=places"> </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDeGHL5IOI-aLC6AkKUL-ft9Ok29UL2mGM&callback=initMap"> </script>
+    <script type="text/javascript" src="./assets/javascript/script.js"></script>    
 </body>
 
 </html>
