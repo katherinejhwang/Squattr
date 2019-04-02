@@ -69,3 +69,7 @@ body {
     height: 300px;
     width: 100%;
 }
+
+#addressInput{
+    z-index: 99999;
+}
