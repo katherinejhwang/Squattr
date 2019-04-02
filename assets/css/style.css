@@ -3,12 +3,21 @@
     width: 100%;
 }
 
+.btn {
+    margin: 10px;
+}
+
 h1 {
     font-family: 'Amatic SC', cursive;
 }
 
 body {
     background-color: silver;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.modal-body {
+    text-align: justify;
 }
 
 #masterDiv {
@@ -31,6 +40,8 @@ body {
     text-align: center;
     border: 1px solid silver;
     border-radius: 5px;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #bottomDiv {
@@ -39,6 +50,7 @@ body {
     border: 1px solid silver;
     border-radius: 5px;
     padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 
@@ -52,9 +64,9 @@ body {
     width: 100%;
     text-align: center;
     padding: 10px 0px 10px;
-    font-size: 10px;
+    font-size: 20px;
     font-family: 'Amatic SC', cursive;
-    position: absolute;
+    position: sticky;
     bottom: 0px
 
 }
@@ -70,6 +82,27 @@ body {
     width: 100%;
 }
 
+
 #addressInput{
     z-index: 99999;
 }
+
+.centerBlock {
+    display: table;
+    margin: auto;
+}
+
+.modal-dialog{
+    overflow-y: initial !important
+}
+.modal-body{
+    height: 250px;
+    overflow-y: auto;
+}
+
+img.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+ }
+

@@ -3,16 +3,60 @@
 
 <head>
   <meta charset="utf-8">
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
+    <!-- Modal Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
   <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">  <title>Squattr</title>
   
 </head>
 
 <body>
+
+  
+    <div class="modal" id="disclaimer" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Why rent, when you can SquaTT?</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                    <p>One third of renters in Los Angeles spend more than half their income on rent. Yet, thousands of bank-owned properties lie vacant across the city.</p>
+
+                    <p>In certain locales, it is possible to seize a vacant property and claim squatter’s rights -granting you right of adverse possession. In a nutshell, this gives you ownership of the abandoned property simply by taking it over (under certain conditions).</p>
+                    
+                    <p>Enter your location, and SquaTTr will find a list of nearby bank-owned properties you could seize.</p>
+
+                    <p><img src="./assets/images/squatt.png" class="center"></p>
+
+                    <p><strong>DISCLAIMER:</strong></p>
+                    
+                    <p>SquaTTr is created for educational and entertainment purposes only. We do not encourage users to break into bank-owned properties to claim Squatter’s Rights. In fact, we never even checked local laws to see what they are. Check with an actual lawyer, as local squatting laws may vary.</p>
+                    
+                    <p>SquaTTr is currently in prototype mode, and only displays foreclosure properties in Los Angeles county. Furthermore, the data returned in this app is probably outdated. We used a free API that returns results from 2017. We make no claims that the data returned is still accurate.</p>
+                    
+                    <p>Breaking and entering into an abandoned property could result in arrest, imprisonment, or even death. Just don’t break into any buildings, OK?</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" data-target="#disclaimer">OK, I won't!</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
     <!-- Header/Nav Bar-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -23,13 +67,10 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="./index.html">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Link1</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">LInk2</a>
+            <a class="nav-link" href="./stats.html">LA Housing Stats</a>
           </li>
         </ul>
       </div>
@@ -46,24 +87,16 @@
             <!-- Div ID Top from Highlighted Page -->
 
                 <div class="row"><div id="topDiv">
-                  <p><h2>squaTTr</h2></p>
-                  <p><i>Why rent when you can squat?</i></p>
+                  <h1>squaTTr</h1>
+                  <h2><i>Because the rent is too damn high!</i></h2>
                 </div>
               </div>
 
             <!-- Div ID Middle from Highlighted Page -->
 
-             
-
-
-            
-
-                <div class="row"><div id="middleDiv">
-                <p></p>
-                <p></p>[Random flavor text with fact about renting here]
-                <p></p>
-
-                
+                <div class="row">
+                  <div id="middleDiv">
+                <p>Enter your location for a list of nearby bank-owned properties to seize.</p>
                 </div>
                 </div>
 
@@ -73,12 +106,115 @@
                 <br>
                 <div id="pano"></div>
 
+                <!-- Show Review Modal -->
+  <div class="modal" id="showReviewModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
+          </div>
+        <div class="modal-body">
+      <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#submitReviewModal" id="showReviewModal">Review This Squatt
+        </button>
+      </div>
+      </div>
+                  </div>
+                </div>
+
+<!-- Submit Review Modal -->
+  <div class="modal fade" id="submitReviewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="col-sm-12 col-md-12 col-lg-12" id="datainput">
+    
+              <div class="row"><p></p></div>
+            
+        <!-- Forms for Review Input -->
+              <form>
+              <div class="row">
+                  <div class="form-group col-md-12">
+                  <label for="Water">Water</label>
+                  <input type="text" class="form-control" id="water" placeholder="Running or Not?">
+                  </div>
+              </div>
+            
+              <div class="row">
+                  <div class="form-group col-md-12">
+                  <label for="Destination">Power</label>
+                  <input type="text" class="form-control" id="power" placeholder="Electricity Still On?">
+                  </div>
+              </div>
+            
+              <div class="row">
+                  <div class="form-group col-md-12">
+                  <label for="Security">Security</label>
+                  <input type="text" class="form-control" id="security" placeholder="Security Guards?">
+                  </div>
+              </div>
+            
+              <div class="row">
+                  <div class="form-group col-md-12">
+                  <label for="neighbors">Neighbors</label>
+                  <input type="text" class="form-control" id="neighbors" placeholder="Nosy?">
+                  </div>
+              </div>
+            
+              <div class="row">
+                <div class="form-group col-md-12">
+                <label for="RodentsandInsects">Vermin</label>
+                <input type="text" class="form-control" id="vermin" placeholder="Vermin">
+                </div>
+            </div>
+            
+            <div class="row">
+              <div class="form-group col-md-12">
+              <label for="OtherComments">Other Comments</label>
+              <input type="text" class="form-control" id="otherComments" placeholder="Other Comments">
+              </div>
+            </div>
+    
+          </div>
+        
+        </form>
+    
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="submit">Submit</button>
+          </div>
+    
+        </div>
+      </div>
+    </div>
+
+    </div>
+
+        </div>
+      </div>
+    
+
+       <!-- Bottom Div Starts Here          -->
+
                 
             <div class="row" id="bottomDiv">
-                <div class="col-sm-12 col-md-12 col-md-12">                   
+                <div class="col-sm-12 col-md-12 col-md-12">
+                  
                 <div class="row">
+                  <div class="centerBlock">
                 <input class="btn btn-danger" type="submit" value="Use Current Location" id="currentLocation">
                 </div>
+              </div>
                 <div class="row">
                   
                 <div class="col-sm-10 col-md-10 col-md-10" id="bottomLeftDiv">                   
@@ -112,7 +248,7 @@
 
     
     <!-- Footer -->
-    <div id="footer">COPYRIGHT &copy;</div>
+    <div id="footer">COPYRIGHT &copy; 2019</div>
 
     <!-- <script>
       var geocoder;
