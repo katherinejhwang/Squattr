@@ -82,6 +82,11 @@ body {
     width: 100%;
 }
 
+
+#addressInput{
+    z-index: 99999;
+}
+
 .centerBlock {
     display: table;
     margin: auto;
@@ -100,3 +105,4 @@ img.center {
     margin-left: auto;
     margin-right: auto;
  }
+
