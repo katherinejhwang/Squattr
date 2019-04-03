@@ -1,5 +1,7 @@
 # Squattr
 
+https://katherinejhwang.github.io/Squattr/
+
 Squattr is for entertainment purposes only. In no way are we offering legal advice or advising which properties to break into. Please obey all laws and avoid tresspassing charges.
 
 Created as a group project for the UCLA Extension Web Development Coding Boot Camp. Because the Google Maps API charges money for every call to their database, we request that you do not make this app public or share on social media.
@@ -15,6 +17,6 @@ Squattr logo created with public domain images from Wikipedia Commons: Home Icon
 This app is currently in development.
 
 Developers:
-Calvin Fronda
-Katherine J. Hwang (not in my legal capacity) - Katherinejhwang@gmail.com 
+Calvin Fronda - cfronda209@gmail.com,
+Katherine J. Hwang (not in my legal capacity) - Katherinejhwang@gmail.com, 
 Mike Damanskis - MikeDamanskis@gmail.com
