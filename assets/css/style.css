@@ -62,12 +62,13 @@ body {
 #footer {
     background-color: white;
     width: 100%;
+    height: 40px;
     text-align: center;
     padding: 10px 0px 10px;
     font-size: 20px;
     font-family: 'Amatic SC', cursive;
-    position: sticky;
-    bottom: 0px
+    position: fixed;
+    bottom: 0;
 
 }
 

@@ -16,6 +16,12 @@ $(document).ready(function () {
     //set var database to equal to firebase.database();
     var database = firebase.database();
 
+
+    // Set up for landing
+    $("#map").hide();
+    $("#pano").hide();
+    $("#showReviewModal").hide();
+    
     //set up review object for each address
 
     // var addressR = fc.address
@@ -63,10 +69,10 @@ $(document).ready(function () {
     //on click of submit button, run the function reviewInput
 
 
-
+// empty array to store data being pulled from api
     var foreclosureArray = [];
 
-
+//using ajax call to get data 
     function addForclosures(cb) {
         var queryURL = "https://data.lacity.org/resource/rd7m-rts2.json";
         $.ajax({
@@ -77,12 +83,11 @@ $(document).ready(function () {
                 //   "$$app_token" : "YOURAPPTOKENHERE" // i don't think this requires an API token or key unless we plan to go public
             }
         }).then(function (data) {
-            // console.log(data.length);
-            // console.log(coordinates);
             for (var i = 0; i < data.length; i++) {
-                //    console.log(data[i]);
                 // var squattCoordinates = data[i].propertyaddress.coordinates;
                 if (data[i].propertyaddress) {
+                    //Looping through data and looking for only "propertyaddress obj"
+                    //within that object get the addres, city, state, and zip
                     var address = data[i].propertyaddress_address;
                     var city = data[i].propertyaddress_city;
                     var state = data[i].propertyaddress_state;
@@ -93,33 +98,64 @@ $(document).ready(function () {
                     });
                 }
             }
+            //call back function to grab the foreclosurArray
+            
             cb()
-
+        
         });
     }
     //showing google maps on the screen
     var map, infoWindow;
 
-    $("#map").hide();
-    $("#pano").hide();
-    $("#showReviewModal").hide();
+  
 
-    $("#currentLocation").on("click", function () {
-
+    document.getElementById('submit').addEventListener('click', function () {
+        geocodeAddress(geocoder, map);
         $("#map").toggle();
+        
+    });
+
+
+    
+
+
+        function geocodeAddress(geocoder, resultsMap){
+            var address = document.getElementById('addressInput').value
+            var rm = resultsMap;
+            geocoder.geocode({ 'address': address }, function (results, status){
+                if( status === 'OK'){
+                    rm.setCenter(results[0].geometry.location);
+                    var marker = new google.maps.Marker({
+                        map: resultsMap,
+                        position: results[0].geometry.location
+                    });
+                    marker.setMap(null);
+                } else{
+                    console.log('nope');
+                }
+            })
+        }
+
+
+
 
 
         addForclosures(function () {
             // console.log(foreclosureArray);
-            var uluru = { lat: 34.0689, lng: -118.4452 };
+            
             var map = new google.maps.Map(
                 document.getElementById('map'),
                 {
                     zoom: 14,
-                    center: uluru,
+                    center: { lat: 34.0689, lng: -118.4452 }
 
                 });
 
+                infoWindow = new google.maps.InfoWindow;
+            $("#currentLocation").on("click", function () {
+            
+                $("#map").toggle();
+                
 
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) {
@@ -140,7 +176,9 @@ $(document).ready(function () {
                 handleLocationError(false, infoWindow, map.getCenter());
             }
 
-
+            //
+            //Throws error code if geolocation failed
+            //
             function handleLocationError(browserHasGeolocation, infoWindow, pos) {
                 infoWindow.setPosition(pos);
                 infoWindow.setContent(browserHasGeolocation ?
@@ -149,26 +187,37 @@ $(document).ready(function () {
                 infoWindow.open(map);
             }
 
+        })
 
+       
 
             foreclosureArray.forEach(function (fc) {
-
+    
                 var icon = {
                     url: "./assets/images/squatt.png",
                     scaledSize: new google.maps.Size(35, 35),
-
+    
                 }
-
+    
                 var latLng = new google.maps.LatLng({ lat: fc.coords[1], lng: fc.coords[0] });
                 // console.log(latLng)
-                var marker = new google.maps.Marker({
+                 var marker = new google.maps.Marker({
                     icon: icon,
                     position: latLng,
                     map: map
                 })
 
+ 
+
+   
+    
+
+
+
+
                 //Event Listener for the Marker will (1) open up street map, (2) Pull Up Modal, and (3) show any logged for that address to the modal
                 marker.addListener('click', function () {
+                    
                     $("#pano").toggle();
                     var panorama = new google.maps.StreetViewPanorama(
                         document.getElementById('pano'), {
@@ -180,8 +229,9 @@ $(document).ready(function () {
                         }
                     )
                     map.setStreetView(panorama);
+
                     database.ref("reviews/" + fc.address).on("value", function (snapshot) {
-                        console.log(snapshot.val());
+                        
                         for (key in snapshot.val()) {
                             var review = snapshot.val()[key];
                             console.log(review);
@@ -199,15 +249,26 @@ $(document).ready(function () {
 
                     })
                     $("#showReviewModal")
+
+                   
                     //second eventlistener for the marker to pop-up modal for review
                     $("#showReviewModal").modal('show');
-
+                   
                     //even listener to write the review to the modal
+            
                     $(".modal-title").append("<p>" + fc.address + "</p>");
+               
+
+                
                     $("#submit").on("click", function () {
                         reviews.reviewInput(fc.address);
+                     
                     });
-
+                 
+                    //clears modals 
+                    $(".modal").on('hidden.bs.modal', function(){
+                        $(".modal-title").html("")
+                    })
 
                 });
 
@@ -226,19 +287,20 @@ $(document).ready(function () {
 
 
 
+            });
+        
 
-            })
-
-
+            });
+      
+   
+   
         })
-    })
     //Function to create each review
     // function createReview (review, coords) {
     //     database.ref('reviews/'+ coords.toString()).set(review);
     // }
 
 
-});
 
 
 
