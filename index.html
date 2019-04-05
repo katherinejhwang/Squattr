@@ -97,7 +97,6 @@
         </ul>
       </div>
     </nav>
-    <br>
     <div class="row"><p></p></div>
     <div class="container" id="masterDiv">
       <div class="centerBlock">
@@ -133,12 +132,11 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title"></h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" id="showReviewClose" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
           </button>
           </div>
-        <div class="modal-body">
-      <p>[Reviews go here]</p>
+        <div class="modal-body" id="showReview">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#submitReviewModal" id="showReviewModal">Review This Squatt
@@ -164,7 +162,7 @@
               <div class="row"><p></p></div>
             
 <!-- Forms for Review Input within Submit Review Modal-->
-              <form>
+              <form id="reviewForm">
 
               <div class="row">
                   <div class="form-group col-md-12">
@@ -211,7 +209,7 @@
           </div>
             
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="submit">Submit</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="submitReview">Submit</button>
           </div>
 
         </form>
