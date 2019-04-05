@@ -3,28 +3,50 @@
 
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+
+  <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  
+  <!-- Popper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
     crossorigin="anonymous"></script>
+
+  <!-- Google API -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- Bootstrap -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
+
     <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
-    <!-- Firebase -->
+
+  <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
-    <!-- Modal Bootstrap -->
+
+  <!-- Modal Bootstrap -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  
+  <!-- CSS Stylesheet -->
   <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
-  <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">  <title>Squattr</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Oswald:300" rel="stylesheet">
+
+  <!-- Bootstrap Mobile -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Squattr</title>
   
 </head>
 
 <body>
 
-  
+  <!-- Disclaimer Modal (upon page load) -->
+
     <div class="modal" id="disclaimer" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -75,16 +97,15 @@
         </ul>
       </div>
     </nav>
-
+    <br>
     <div class="row"><p></p></div>
-
     <div class="container" id="masterDiv">
-    
+      <div class="centerBlock">
       <div class="row">
 
-          <div class="col-sm-12">
+          <div class="col">
     
-            <!-- Div ID Top from Highlighted Page -->
+<!-- Div ID Top from Highlighted Page -->
 
                 <div class="row"><div id="topDiv">
                   <h1>squaTTr</h1>
@@ -92,21 +113,21 @@
                 </div>
               </div>
 
-            <!-- Div ID Middle from Highlighted Page -->
+<!-- Div ID Middle from Highlighted Page -->
 
                 <div class="row">
                   <div id="middleDiv">
-                <p>Enter your location for a list of nearby bank-owned properties to seize.</p>
+                <p><i>Enter your address for a list of nearby bank-owned properties to squaTT.</i></p>
                 </div>
                 </div>
 
                 
-            <!-- Div ID Bottm from Highlighted Page -->
+<!-- Div ID Bottm from Highlighted Page -->
                 <div id="map"></div>
                 
                 <div id="pano"></div>
 
-                <!-- Show Review Modal -->
+<!-- Show Review Modal Upon Clicking on SquaTTr Marker-->
   <div class="modal" id="showReviewModal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -117,17 +138,17 @@
           </button>
           </div>
         <div class="modal-body">
-      <p>Modal body text goes here.</p>
+      <p>[Reviews go here]</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#submitReviewModal" id="showReviewModal">Review This Squatt
         </button>
       </div>
       </div>
-                  </div>
-                </div>
+      </div>
+      </div>
 
-<!-- Submit Review Modal -->
+<!-- Submit Review Modal (within Show Review Modal) -->
   <div class="modal fade" id="submitReviewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -138,12 +159,13 @@
             </button>
           </div>
           <div class="modal-body">
-            <div class="col-sm-12 col-md-12 col-lg-12" id="datainput">
+            <div class="col-sm-10" id="datainput">
     
               <div class="row"><p></p></div>
             
-        <!-- Forms for Review Input -->
+<!-- Forms for Review Input within Submit Review Modal-->
               <form>
+
               <div class="row">
                   <div class="form-group col-md-12">
                   <label for="Water">Water</label>
@@ -187,12 +209,12 @@
             </div>
     
           </div>
-        
-        </form>
-    
+            
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal" id="submit">Submit</button>
           </div>
+
+        </form>
     
         </div>
       </div>
@@ -204,40 +226,42 @@
       </div>
     
 
-       <!-- Bottom Div Starts Here          -->
-
+<!-- Bottom Div Starts Here          -->
+    <div class="row"><div id="bottomDiv">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-5">
+          <div class="centerBlock">
+          <input class="btn btn-danger" type="submit" value="Use Current Location" id="currentLocation">
+          </div>
+        </div>
+      <div class="col-sm-7">
+        <div class="centerBlock">
+          <form>   
+          <label for="addressinput">CITY, STATE, ZIP OR ADDRESS:</label>
+          <input type="text" class="form-control" id="addressInput" placeholder="1010 Westwood Blvd., Los Angeles, CA">
+          <small id="emailHelp" class="form-text text-muted">We'll never share your address with anyone else.</small>
+          <div class='centerBlock'>
+          <input class="btn btn-danger" type="button" value="Go!" id="submit">
+          </div>
+          </form>
+      </div>
+    </div>
                 
-            <div class="row" id="bottomDiv">
-                <div class="col-sm-12 col-md-12 col-md-12">
-                  
-                <div class="row">
-                  <div class="centerBlock">
-                <input class="btn btn-danger" type="submit" value="Use Current Location" id="currentLocation">
-                </div>
-              </div>
-                <div class="row">
-                  
-                <div class="col-sm-10 col-md-10 col-md-10" id="bottomLeftDiv">                   
-                    <label for="addressinput">CITY, STATE, ZIP OR ADDRESS:</label>
-                    <input type="text" class="form-control" id="addressInput" placeholder="city, state or zip, i.e. Austin or Paris, TX or 64101">
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your address with anyone else.</small>
-                    <p></p>
-                    </form>
-                  </div>
-                
-                  <div class="col-sm-2 col-md-2 col-md-2" id="bottomRightDiv">
-                  <p></p>
-                  <p></p>
-                  <input class="btn btn-danger" type="submit" value="Go!" id="submit">
-                  </div>
+    </div>
+            
+              </div>                                    
+            </div>
 
-              </div>
-                </div>
+          </div>
+
             </div>
 
           </div>
     
-
+<!-- End centerBlock Class -->
+      </div> 
+<!-- End div Container -->
       </div>
 
     </div>
@@ -249,12 +273,15 @@
     <br>
     <br>
     
-    <!-- Footer -->
-    <div id="footer">COPYRIGHT &copy; 2019</div>
+<!-- Footer -->
+    <div id="footer">Copyright &copy; 2019</div>
 
-
+<!-- Google Maps API -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDeGHL5IOI-aLC6AkKUL-ft9Ok29UL2mGM&callback=initMap"> </script>
-    <script type="text/javascript" src="./assets/javascript/script.js"></script>    
+
+<!-- Javascript -->
+    <script type="text/javascript" src="./assets/javascript/script.js"></script> 
+
 </body>
 
 </html>
