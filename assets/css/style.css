@@ -3,6 +3,10 @@
     width: 100%;
 }
 
+.navBar {
+    font-family: 'Oswald', sans-serif;;
+}
+
 .btn {
     margin: 10px;
 }
@@ -23,11 +27,16 @@ body {
 
 p {
     font-size: 16px;
-    font-family: 'Oswald', sans-serif;
+}
+
+.modal-header {
+    font-family: 'Amatic SC', cursive;
+    font-size: 30px;
 }
 
 .modal-body {
     text-align: justify;
+    font-family: 'Oswald', sans-serif;
 }
 
 .modal-title {
