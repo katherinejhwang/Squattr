@@ -218,7 +218,7 @@ $(document).ready(function () {
 
 // Initialize Firebase
     var config = {
-        apiKey: "AIzaSyBgsXpvv64II3MPuCvCc1K6W9hr1j8aItA",
+        apiKey: "",
         authDomain: "squattr-19bfc.firebaseapp.com",
         databaseURL: "https://squattr-19bfc.firebaseio.com",
         projectId: "squattr-19bfc",
